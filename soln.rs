@@ -3,7 +3,7 @@
 // for license terms.
 
 //! Advent of Code Day 5.  
-//! Bart Massey 2022
+//! Ben and Bart Massey 2022
 
 use aoc::*;
 
