@@ -51,18 +51,25 @@ fn main() {
         let count = parsed.get::<usize>(1);
         let source = parsed.get::<usize>(2) - 1;
         let dest = parsed.get::<usize>(3) - 1;
-        for _ in 0..count {
-            let block = rows[source].pop().unwrap();
-            rows[dest].push(block);
+        match get_part() {
+            Part1 => {
+                for _ in 0..count {
+                    let block = rows[source].pop().unwrap();
+                    rows[dest].push(block);
+                }
+            }
+            Part2 => {
+                let nsource = rows[source].len();
+                assert!(nsource >= count);
+                let blocks: Vec<char> = rows[source]
+                    .drain(nsource - count..)
+                    .collect();
+                rows[dest].extend_from_slice(&blocks);
+            }
         }
     }
 
-    match get_part() {
-        Part1 => {
-            let message: String =
-                rows.iter_mut().flat_map(|r| r.pop()).collect();
-            println!("{message}");
-        }
-        Part2 => todo!(),
-    }
+    let message: String =
+        rows.iter_mut().flat_map(|r| r.pop()).collect();
+    println!("{message}");
 }
