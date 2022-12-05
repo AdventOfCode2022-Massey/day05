@@ -17,6 +17,9 @@ edition = "2021"
 name = "day05"
 path = "soln.rs"
 
+[dependencies]
+regex = "1.7.0"
+
 [dependencies.aoc]
 version = "0.2"
 git = "https://github.com/BartMassey/libaoc"
